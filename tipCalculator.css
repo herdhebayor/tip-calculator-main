@@ -1,0 +1,231 @@
+ @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700&family=Montserrat:wght@500&family=Space+Mono&family=Ubuntu&display=swap');
+
+*{
+  box-sizing: border-box;
+}
+html, body{
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  background-color: hsl(185, 41%, 84%);
+  font-size: 18px;
+  font-family: 'Space Mono', monospace;
+}
+main{
+  width: inherit ;
+  height: inherit;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.container{
+  width: 650px;
+  height: 400px;
+  display: flex;
+  background-color: hsl(0, 0%, 100%) ;
+  padding: 20px;
+  border-radius: 10px;
+  gap: 20px;
+}
+.inputSection,.outputSection{
+  width: 50%;
+  height: 100% ;
+  min-height: 250px;
+  padding: 10px;
+  border-radius: 10px;
+  position: relative;
+}
+form{
+  width: 100%;
+  height: 100%;
+  justify-content: space-between;
+}
+.outputSection, form{
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.inputSection{
+  align-items: space-between;
+}
+.outputSection{
+  background-color:hsl(183, 100%, 15%);
+  color: hsl(0, 0%, 100%);
+  padding-top:30px;
+}
+.billInput, .personsInput{
+  width: 100%;
+  height: 70px;
+  line-height: 30px;
+}
+.inputWrapper{
+  position: relative;
+  background-color: hsl(189, 41%, 97%);
+  border-radius: 5px;
+}
+.icon{
+  position: absolute;
+  left: 5px;
+  top: 0;
+  width: fit-content;
+  height: 100%;
+}
+label, .btn, input, .headTxt, .txt{
+  font-weight: 700;
+}
+lable{
+  display: flex;
+  justify-content: space-between;
+}
+.billError, .personsError{
+  text-align: right;
+  color: red;
+  font-size: .7em;
+  font-weight: 700;
+  float: right;
+}
+.errorBorder, #custom-btn.errorBorder{
+  border: 2px solid red;
+}
+input{
+  width: 100%;
+  height: 40px;
+  text-align: right;
+  background-color:transparent;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.5em;
+  color:hsl(183, 100%, 15%) ;
+}
+input:hover, input:focus, #custom-btn:focus{
+  outline: 0;
+  border: 2px solid  hsl(172, 67%, 45%);
+}
+.btnContainer,  .btnSection{
+  width: 100%;
+  height:fit-content ;
+}
+.btnContainer{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 5px;
+}
+.btn, .icon, #custom-btn{
+  display: flex;
+  justify-content: center;
+  align-items:center;
+}
+.btn{
+  flex: 1 1 70px;
+  height: 40px;
+  border-radius: 3px;
+  background-color: hsl(183, 100%, 15%);
+  color: hsl(0, 0%, 100%);
+  cursor: pointer;
+  font-size: 1.5em;
+}
+.btn.active, .reset.active{
+  background-color: hsl(172, 67%, 45%);
+  color:hsl(183, 100%, 15%) ;
+}
+#custom-btn{
+  font-size: 1em;
+  background-color:hsl(189, 41%, 97%) ;
+  color: hsl(183, 100%, 15%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.tips,.total{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.txt{
+  display: flex;
+  flex-direction: column;
+}
+span{
+  opacity: .5;
+  font-weight: 400;
+  font-size: .8em;
+}
+.tipAmt, .totalAmt{
+  font-size: 2.5em;
+  font-weight: 700;
+  color: hsl(172, 67%, 45%);
+  display: flex;
+  align-items: center;
+}
+#tipAmt,#personsAmt{
+  font-weight:700;
+  font-size: 1em;
+}
+.tipAmt span, .totalAmt span{
+  font-size: .7em;
+  opacity: 1;
+}
+.reset{
+  position: absolute;
+  bottom: 20px;
+  left: 10px;
+  transform: translate(-50% -50%);
+  width:90%;
+  height: 40px;
+  border: 0;
+  border-radius: 5px;
+  outline: none;
+  text-align: center;
+  background-color: hsl(186, 14%, 43%);
+  cursor: pointer;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: hsl(183, 100%, 15%);
+}
+.customErr{
+  position: absolute;
+  z-index: 3;
+  text-align: center;
+  width: fit-content;
+  height:fit-content;
+  padding: 10px;
+  background-color: rgb(0,0,0,.5);
+  border-radius: 8px;
+  bottom: 20px;
+  font-weight: 500;
+  font-size: 1.2em;
+  display: none;
+  color: hsl(0, 0%, 100%);
+}
+.customErr.show{
+  display: block;
+  animation: fadeIn 1s ease;
+}
+@keyframes fadeIn{
+  0%{
+    transform: translateY(500px);
+  }
+  100%{
+    transform:translateY(0);
+  }
+}
+@media screen and (max-width:600px){
+  html, body{
+    font-size: 15px;
+  }
+  .container{
+    flex-direction: column ;
+    width: 100%;
+    height: fit-content;
+    position: absolute;
+    bottom: 0;
+    border-radius: 20px 20px 0 0;
+  }
+  .inputSection, .outputSection{
+    width: 100%;
+    padding: 15px;
+  }
+}
